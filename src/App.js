@@ -1,48 +1,29 @@
 import './App.css';
-import { Container, CssBaseline, ThemeProvider, Paper, createMuiTheme } from '@material-ui/core';
+import { Container, CssBaseline, MuiThemeProvider, Paper, createMuiTheme } from '@material-ui/core';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
 import ChooseScreen from './screens/ChooseScreen';
 import OrderScreen from './screens/OrderScreen';
 
-const font = "'Merienda', cursive";
+const Merienda = "'Merienda', cursive";
+const OpenSans = "'Open Sans', cursive";
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: font,
-    h1: {fontWeight: 'bold'},
-    h2: {
-      fontSize: '2rem',
-      color: 'black',
-    },
-    h3: {
-      fontSize: '1.8rem',
-      fontWeight: 'bold',
-      color: 'red',
-    },
-    
-    h5: {
-      fontWeight: 'bold',
-    },
-    
-    h6: {
-      fontSize: '.8rem'
-    },
-
-    palette: {
-      primary: {main: '#ff1744'},
-      secondary: {
-        main: '#118e16',
-        contrastText: '#ffffff',
-      }
-    }
+    fontFamily: OpenSans,
+    h1: {fontWeight: 'bold', fontFamily: Merienda, color: '#127a75'},
+    h2: {fontSize: '2.2rem', fontWidth: 'bold', fontFamily: Merienda, color: '#127a75'},
+    h3: {fontSize: '1.8rem', fontWeight: 'bold', color: '#127a75'},
+    h4: {fontSize: '1.3rem', fontWeight: 'bold', color: '#127a75'},
+    h5: {fontSize: '1rem', fontWeight: 'bold'},
+    h6: {fontSize: '.8rem', color: '#127a75'},
   }
 });
 
 function App() {
   return (
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
+      <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <Container maxWidth="sm">
           <Paper>
@@ -53,7 +34,7 @@ function App() {
             </Switch>
           </Paper>
         </Container>
-      </ThemeProvider>
+      </MuiThemeProvider>
     </BrowserRouter>
   );
 }

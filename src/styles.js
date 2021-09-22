@@ -7,30 +7,23 @@ export const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
     },
 
-    green: {
-        backgroundColor: '#6e6b2e',
-    },
-
-    orange: {
-        backgroundColor: '#df782e',
-    },
-
-    yellow: {
-        backgroundColor: '#eccb6c',
-    },
-
-    red: {
-        backgroundColor: '#d02f29',
-        color: '#ffffff',
-    },
-
     main: {
         flex: 1,
         overflow: 'auto',
         flexDirection: 'column',
         display: 'flex',
-        color: '#6e6b2e',
-        borderColor: '#eccb6c'
+        backgroundColor: '#f0f8f7'
+    },
+
+    button_primary: {
+        backgroundColor: '#127a75',
+        color: '#ffffff'
+    },
+
+    button_secondary: {
+        backgroundColor: '#e3ebe9',
+        borderColor: '#127a75',
+        color: '#127a75'
     },
 
     center: {
@@ -44,6 +37,10 @@ export const useStyles = makeStyles((theme) => ({
         height: 100,
     },
 
+    logo: {
+        height: 50,
+    },
+
     cards: {
         display: 'flex',
         justifyContent: 'center',
@@ -52,6 +49,12 @@ export const useStyles = makeStyles((theme) => ({
 
     card: {
         margin: 10,
+    },
+
+    title: {
+        marginTop: 18,
+        marginLeft: 10,
+        fontWeight: 550,
     },
 
     space: {
@@ -64,7 +67,39 @@ export const useStyles = makeStyles((theme) => ({
 
     margin_bottom: {
         marginBottom: 20,
-    }
+    },
+
+    largeButton: {
+        width: 250,
+    },
+
+    largeInput: {
+        width: '60px!important',
+        padding: '0!important',
+        fontSize: '30px!important',
+        textAlign: 'center!important',
+    },
+
+    bordered: {
+        borderWidth: 1,
+        borderRadius: 5,
+        margin: 5,
+        borderStyle: 'dotted',
+        borderColor: '#b7d4d4',
+    },
+
+    row : {
+        display: 'flex',
+        padding: 10,
+    },
+
+    around: {
+        justifyContent: 'space-around',
+    },
+
+    between: {
+        justifyContent: 'space-between',
+    },
 
 }));
 

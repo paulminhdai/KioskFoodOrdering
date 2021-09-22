@@ -12,8 +12,8 @@ export default function HomeScreen(props) {
           <Box className={[styles.root]}>
             
             <Box className={[styles.main, styles.center]}>
-              <Typography component="h5" variant="h5" className={[styles.margin_bottom]}>
-                Welcome to Pho!
+              <Typography component="h4" variant="h4" className={[styles.margin_bottom]}>
+                Welcome to Boba Store!
               </Typography>
               <Typography component="h1" variant="h1" className={[styles.margin_bottom]}>
                 Order<br/> here

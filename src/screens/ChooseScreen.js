@@ -19,11 +19,11 @@ export default function ChooseScreen(props) {
       <Box  className={[styles.root]}>
         <Box className={[styles.main, styles.center]}>
           <Logo large></Logo>
-          <Typography variant="h3" component="h3" className={styles.center} gutterBottom>
-            Start to order
+          <Typography variant="h2" component="h2" className={styles.center} gutterBottom>
+            Where?!?
           </Typography>
           <Box className={styles.cards}>
-            <Card className={[styles.card, styles.space, styles.yellow]}>
+            <Card className={[styles.card, styles.space, ]}>
               <CardActionArea onClick={()=> chooseHandler('Dine in')}>
                 <CardMedia component="img" alt="Dine in" image="/images/eatin.png" className={styles.media}>
                 </CardMedia>
@@ -34,7 +34,7 @@ export default function ChooseScreen(props) {
                 </CardContent>
               </CardActionArea>
             </Card>
-            <Card className={[styles.card, styles.space, styles.orange]}>
+            <Card className={[styles.card, styles.space,]}>
               <CardActionArea onClick={()=> chooseHandler('Take out')}>
                 <CardMedia component="img" alt="Dine in" image="/images/eatin.png" className={styles.media}>
                 </CardMedia>
