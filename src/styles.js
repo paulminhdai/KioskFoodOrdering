@@ -5,6 +5,7 @@ export const useStyles = makeStyles((theme) => ({
         height: '100vh',
         display: 'flex',
         flexDirection: 'column',
+        backgroundColor: '#f0f8f7'
     },
 
     main: {
@@ -99,6 +100,10 @@ export const useStyles = makeStyles((theme) => ({
 
     between: {
         justifyContent: 'space-between',
+    },
+
+    column: {
+        flexDirection: 'column',
     },
 
 }));

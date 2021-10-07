@@ -1,6 +1,23 @@
 import Axios from 'axios';
 
-import { ORDER_SET_TYPE, CATEGORY_LIST_REQUEST, CATEGORY_LIST_FAIL, CATEGORY_LIST_SUCCESS, PRODUCT_LIST_REQUEST,PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL, ORDER_ADD_ITEM, ORDER_REMOVE_ITEM, ORDER_CLEAR } from "./constants"
+import { ORDER_SET_TYPE, 
+        CATEGORY_LIST_REQUEST,
+        CATEGORY_LIST_FAIL, 
+        CATEGORY_LIST_SUCCESS, 
+        PRODUCT_LIST_REQUEST,
+        PRODUCT_LIST_SUCCESS, 
+        PRODUCT_LIST_FAIL, 
+        ORDER_ADD_ITEM, 
+        ORDER_REMOVE_ITEM, 
+        ORDER_CLEAR,
+        ORDER_SET_PAYMENT_TYPE,
+        ORDER_CREATE_REQUEST,
+        ORDER_CREATE_FAIL, 
+        ORDER_CREATE_SUCCESS,
+        ORDER_LIST_REQUEST,
+        ORDER_LIST_SUCCESS,
+        ORDER_LIST_FAIL,
+        SCREEN_SET_WIDTH} from "./constants"
 
 export const setOderType = (dispatch, orderType) => {
     return dispatch({
@@ -60,3 +77,46 @@ export const clearOrder = async (dispatch) => {
         type: ORDER_CLEAR,
     });
 };
+
+export const setPaymentType = async (dispatch, paymentType) => {
+    return dispatch({
+        type: ORDER_SET_PAYMENT_TYPE,
+        payload: paymentType,
+    });
+}
+
+export const createOrder = async (dispatch, order) => {
+    dispatch({ type: ORDER_CREATE_REQUEST });
+    try {
+        const { data } = await Axios.post('/api/orders', order);
+        dispatch({
+            type: ORDER_CREATE_SUCCESS,
+            payload: data,
+        });
+        dispatch({
+            type: ORDER_CLEAR,
+        });
+    } catch (error) {
+        dispatch({
+            type: ORDER_CREATE_FAIL,
+            payload: error.message,
+        });
+    }
+}
+
+export const listOrders = async (dispatch) => {
+    dispatch({ type: SCREEN_SET_WIDTH })
+    dispatch({ type: ORDER_LIST_REQUEST });
+    try {
+        const { data } = await Axios.get(`/api/orders`);
+        return dispatch({
+            type: ORDER_LIST_SUCCESS,
+            payload: data,
+        });
+    } catch (error) {
+        return dispatch({
+            type: ORDER_LIST_FAIL,
+            payload: error.message,
+        });
+    }
+}

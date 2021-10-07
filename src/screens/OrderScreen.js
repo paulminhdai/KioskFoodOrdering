@@ -77,7 +77,7 @@ export default function OrderScreen(props) {
     } else {
       listProducts(dispatch, categoryName);
     }
-  }, [categories, categoryName]);
+  }, [categories, categoryName, dispatch]);
 
   const categoryClickHandler = (name) => {
     setCategoryName(name);
@@ -262,7 +262,6 @@ export default function OrderScreen(props) {
             <Button
               onClick={previewOrderHandler}
               variant="contained"
-              color="secondary"
               disabled={orderItems.length === 0}
               className={[styles.largeButton, styles.button_primary]}
             >

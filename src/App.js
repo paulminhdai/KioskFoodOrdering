@@ -1,14 +1,21 @@
 import './App.css';
-import { Container, CssBaseline, MuiThemeProvider, Paper, createMuiTheme } from '@material-ui/core';
+import React, { useContext } from 'react';
+import { Container, CssBaseline, MuiThemeProvider, Paper, createTheme } from '@material-ui/core';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
 import ChooseScreen from './screens/ChooseScreen';
 import OrderScreen from './screens/OrderScreen';
+import ReviewScreen from './screens/ReviewScreen';
+import SelectPaymentScreen from './screens/SelectPaymentScreen';
+import PaymentScreen from './screens/PaymentScreen';
+import CompleteScreen from './screens/CompleteScreen';
+import AdminScreen from './screens/AdminScreen';
+import { Store } from './Store'
 
 const Merienda = "'Merienda', cursive";
 const OpenSans = "'Open Sans', cursive";
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     fontFamily: OpenSans,
     h1: {fontWeight: 'bold', fontFamily: Merienda, color: '#127a75'},
@@ -21,16 +28,22 @@ const theme = createMuiTheme({
 });
 
 function App() {
+  const { state } =  useContext(Store);
   return (
     <BrowserRouter>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
-        <Container maxWidth="sm">
+        <Container maxWidth={state.widthScreen ? 'lg' : 'sm'}>
           <Paper>
             <Switch>
             <Route path="/" component={HomeScreen} exact={true}></Route>
             <Route path="/choose" component={ChooseScreen} exact={true}></Route> 
             <Route path="/order" component={OrderScreen} exact={true}></Route> 
+            <Route path="/review" component={ReviewScreen} exact={true}></Route> 
+            <Route path="/select-payment" component={SelectPaymentScreen} exact={true}></Route> 
+            <Route path="/payment" component={PaymentScreen} exact={true}></Route> 
+            <Route path="/complete" component={CompleteScreen } exact={true}></Route> 
+            <Route path="/admin" component={AdminScreen } exact={true}></Route> 
             </Switch>
           </Paper>
         </Container>
