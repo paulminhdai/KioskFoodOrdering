@@ -20,7 +20,7 @@ export default function ChooseScreen(props) {
         <Box className={[styles.main, styles.center]}>
           <Logo large></Logo>
           <Typography variant="h2" component="h2" className={styles.center} gutterBottom>
-            Where?!?
+            
           </Typography>
           <Box className={styles.cards}>
             <Card className={[styles.card, styles.space, ]}>

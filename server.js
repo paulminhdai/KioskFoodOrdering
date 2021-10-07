@@ -21,11 +21,14 @@ const Product = mongoose.model(
     'products', 
     new mongoose.Schema({
         name: String,
-        description: String,
         image: String,
         price: Number,
         calorie: Number,
         category: String,
+        ingredient: { type: String, default: 'N/A'},
+        healthNotes: { type: String, default: 'N/A'},
+        prepTime: Number,
+        inStock: { type: Boolean, default: true}
     })
 );
 

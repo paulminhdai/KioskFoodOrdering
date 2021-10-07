@@ -6,7 +6,7 @@ export default function Logo(props) {
 
     return (
         <img
-            src="/images/logo1.png"
+            src="/images/logo.png"
             alt="Food order"
             className={props.large ? styles.largeLogo : styles.logo}
         ></img>

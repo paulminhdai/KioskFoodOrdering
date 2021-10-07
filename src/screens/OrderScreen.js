@@ -97,6 +97,12 @@ export default function OrderScreen(props) {
           <DialogTitle className={styles.center}>
             Add {product.name}
           </DialogTitle>
+          <Typography gutterBottom className={[styles.center]} variant="body4" component="p">
+            Health Notes: {product.ingredient}
+          </Typography>
+          <Typography gutterBottom className={[styles.center]} variant="body4" component="p">
+            Health Notes: {product.healthNotes}
+          </Typography>
           <Box className={[styles.row, styles.center]}>
             <Button
               variant="contained"
