@@ -118,11 +118,11 @@ export default function ReviewScreen(props) {
                         <Typography gutterBottom variant="body2" color="textPrimary" component="p">
                           {orderItem.name}
                         </Typography>
-                        <Button variant="contained">Edit</Button>
+                        <Button variant="contained" className={[styles.button_secondary]}>Edit</Button>
                       </Box>
                       <Box className={[styles.row, styles.between]}>
                         <Typography gutterBottom variant="body2" color="textPrimary" component="p">
-                          {orderItem.calorie} Cal
+                          {orderItem.calories} Cal
                         </Typography>
                         <Typography gutterBottom variant="body2" color="textPrimary" component="p">
                           {orderItem.quantity} x ${orderItem.price}

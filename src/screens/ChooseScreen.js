@@ -36,7 +36,7 @@ export default function ChooseScreen(props) {
             </Card>
             <Card className={[styles.card, styles.space,]}>
               <CardActionArea onClick={()=> chooseHandler('Take out')}>
-                <CardMedia component="img" alt="Dine in" image="/images/eatin.png" className={styles.media}>
+                <CardMedia component="img" alt="Dine in" image="/images/takeout.png" className={styles.media}>
                 </CardMedia>
                 <CardContent>
                   <Typography gutterBottom variant="h4" component="p" color="textPrimary">

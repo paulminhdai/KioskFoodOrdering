@@ -100,6 +100,8 @@ app.post('/api/orders', async (req, res) => {
 });
 
 app.put('/api/orders/:id', async (req, res) => {
+    console.log(req.body);
+    console.log(req.params.id);
     const order = await Order.findById(req.params.id);
     if (order) {
         if(req.body.action === 'ready') {

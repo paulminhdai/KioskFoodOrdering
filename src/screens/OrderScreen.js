@@ -95,10 +95,12 @@ export default function OrderScreen(props) {
           maxWidth="sm"
         >
           <DialogTitle className={styles.center}>
-            Add {product.name}
           </DialogTitle>
+          <Typography gutterBottom className={[styles.center]} variant="h4" component="h4">
+            Add {product.name}
+          </Typography>
           <Typography gutterBottom className={[styles.center]} variant="body4" component="p">
-            Health Notes: {product.ingredient}
+            Ingredients: {product.ingredient}
           </Typography>
           <Typography gutterBottom className={[styles.center]} variant="body4" component="p">
             Health Notes: {product.healthNotes}
@@ -226,7 +228,7 @@ export default function OrderScreen(props) {
                                 variant="h6"
                                 component="h6"
                               >
-                                {product.calorie} Cal
+                                {product.calories} Cal
                               </Typography>
                               <Typography
                                 variant="h5"
