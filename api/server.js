@@ -69,7 +69,6 @@ const db = new sqlite3.Database('./kiosk.db', (err) => {
         db.run('CREATE TABLE IF NOT EXISTS orderItems( \
             orderID INTEGER NOT NULL,\
             itemID INTEGER NOT NULL,\
-            itemName NVARCHAR(50) NOT NULL,\
             quantity INTERGER NOT NULL,\
             CONSTRAINT orderItemsPK PRIMARY KEY (orderID, itemID),\
             CONSTRAINT orderItemsFK_order FOREIGN KEY (orderID) REFERENCES orders(number) ON UPDATE CASCADE ON DELETE CASCADE,\
@@ -164,7 +163,9 @@ app.get("/api/orders", (req, res, next) => {
     executeSql("SELECT * FROM orders WHERE isDelivered = 0 AND isCanceled = 0", [])
     .then(orders => 
         Promise.all(orders.map(order => 
-            executeSql("SELECT * FROM orderItems WHERE orderID = ?", [order.number])
+            executeSql("SELECT * FROM orderItems\
+                        LEFT JOIN foodItems\
+                        ON orderItems.itemID = foodItems.id WHERE orderID = ?", [order.number])
             .then(orderItems => 
                 ({  number: order.number, 
                     orderType: order.orderType, 
@@ -180,7 +181,7 @@ app.get("/api/orders", (req, res, next) => {
                     updatedAt: order.updatedAt,
                     orderItems: orderItems.map(orderItem =>
                         ({id: orderItem.itemId, 
-                          name: orderItem.itemName, 
+                          name: orderItem.name, 
                           quantity: orderItem.quantity})
                 )})
             )
@@ -222,9 +223,9 @@ app.post("/api/orders", (req, res, next) => {
     // Record all items for the order
     var orderItems = req.body.orderItems;
     orderItems.forEach( item => {
-        let insertItem = 'INSERT INTO orderItems (itemID, itemName, quantity, orderID) VALUES (?,?,?,\
+        let insertItem = 'INSERT INTO orderItems (itemID, quantity, orderID) VALUES (?,?,\
                             (SELECT number FROM orders WHERE orderType = ? AND paymentType = ? AND totalPrice = ? AND createdAt = ?))';
-        var params = [item.id, item.name, item.quantity, order.orderType, order.paymentType, order.totalPrice, order.createdAt];
+        var params = [item.id, item.quantity, order.orderType, order.paymentType, order.totalPrice, order.createdAt];
         db.run(insertItem, params, function (err, result) {
             if (err){
                 res.status(400).json({"error": err.message})
